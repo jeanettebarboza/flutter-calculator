@@ -41,6 +41,13 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
         } catch (e) {
           _result = 'Error';
         }
+      } else if (value == 'x²') {
+        try {
+          double number = double.parse(_expression);
+          _result = (number * number).toString();
+        } catch (e) {
+          _result = 'Error';
+        }
       } else {
         _expression += value;
       }
@@ -63,7 +70,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('GitHub Copilot Calculator'),
+        title: Text('Calculator App'),
       ),
       body: Column(
         children: <Widget>[
@@ -117,6 +124,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
               _buildButton('C'),
               _buildButton('='),
               _buildButton('+'),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              _buildButton('x²'), // Add the new button here
             ],
           ),
         ],
